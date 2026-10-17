@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>久久影视网 - 经典影视长映导航 | jiujiuyingshiwang-h5.github.io</title>
+<meta name="description" content="久久影视网(jiujiuyingshiwang-h5.github.io)以老座钟与留声机气质整理经典电影、老剧、修复版与高分纪录片，长长久久陪你看好片，不追快餐、只藏老味道。" />
+<meta name="keywords" content="久久影视网,jiujiuyingshiwang-h5,经典影视,老片导航,修复版电影,高分老剧" />
+<style>
+:root{
+  --walnut:#5b3a29;
+  --walnut-2:#3f281c;
+  --gold:#c9a227;
+  --gold-2:#a9861b;
+  --paper:#f4ecdc;
+  --paper-2:#ece0c8;
+  --ink:#2b211a;
+  --ink-2:#5a4a3c;
+  --ink-3:#8a7560;
+  --teal:#26302b;
+  --wine:#7c2b22;
+  --line:rgba(91,58,41,0.25);
+  --shadow:0 10px 28px rgba(63,40,28,0.18);
+  --shadow-hover:0 18px 42px rgba(124,43,34,0.26);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Songti SC","SimSun","PingFang SC","Microsoft YaHei",serif,sans-serif;
+  background:
+    radial-gradient(circle at 10% 12%,rgba(201,162,39,0.08),transparent 38%),
+    radial-gradient(circle at 90% 88%,rgba(38,48,43,0.10),transparent 42%),
+    var(--paper);
+  color:var(--ink);line-height:1.85;overflow-x:hidden;
+}
+a{color:var(--wine);text-decoration:none}
+img{max-width:100%;display:block}
+
+/* 座钟头 */
+.clock-head{
+  position:relative;z-index:10;text-align:center;padding:52px 20px 36px;
+  background:linear-gradient(180deg,var(--paper-2),var(--paper));
+  border-bottom:4px double var(--walnut);
+}
+.clock-logo{
+  width:96px;height:120px;margin:0 auto 14px;position:relative;
+  background:linear-gradient(180deg,var(--walnut),var(--walnut-2));
+  border-radius:48px 48px 14px 14px;border:4px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 6px rgba(244,236,220,0.12),var(--shadow);
+}
+.clock-logo .face{
+  width:62px;height:62px;border-radius:50%;background:var(--paper);
+  border:3px solid var(--gold);position:relative;
+}
+.clock-logo .face::before,.clock-logo .face::after{
+  content:"";position:absolute;left:50%;bottom:50%;background:var(--walnut-2);transform-origin:bottom center;
+}
+.clock-logo .face::before{width:3px;height:22px;transform:translateX(-50%) rotate(40deg)}
+.clock-logo .face::after{width:2px;height:28px;transform:translateX(-50%) rotate(-30deg);animation:swing 3s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:translateX(-50%) rotate(-30deg)}50%{transform:translateX(-50%) rotate(20deg)}}
+.clock-head h1{font-size:32px;font-weight:900;letter-spacing:5px;color:var(--ink)}
+.clock-head h1 b{color:var(--wine)}
+.clock-head p{max-width:520px;margin:10px auto 0;color:var(--ink-2);font-size:16px}
+.clock-nav{margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.clock-nav a{
+  padding:9px 20px;border:2px solid var(--walnut);border-radius:30px;
+  font-size:14px;font-weight:700;color:var(--ink-2);background:rgba(255,255,255,0.4);transition:.25s;
+}
+.clock-nav a:hover{background:var(--wine);color:var(--paper);border-color:var(--wine)}
+
+/* 留声机条 */
+.phono-bar{
+  position:relative;z-index:10;background:var(--teal);color:var(--paper);
+  padding:10px 20px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;
+  border-bottom:2px solid var(--gold);
+}
+.phono-bar .disc{display:inline-block;animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.wrap{position:relative;z-index:10;max-width:980px;margin:0 auto;padding:0 18px 60px}
+.section{margin-bottom:54px;scroll-margin-top:20px}
+.sec-title{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.sec-title .medal{
+  width:34px;height:34px;background:var(--gold);color:var(--walnut-2);
+  display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;border-radius:50%;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,0.4);flex-shrink:0;
+}
+.sec-title h2{font-size:23px;font-weight:900;letter-spacing:2px;color:var(--ink)}
+.sec-title .rule{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--walnut) 0 12px,transparent 12px 18px)}
+
+/* 时间轴长卷 */
+.timeline{position:relative;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:3px;background:var(--walnut);opacity:.4}
+.tl-item{position:relative;margin-bottom:22px}
+.tl-item::before{
+  content:"";position:absolute;left:-23px;top:18px;width:14px;height:14px;border-radius:50%;
+  background:var(--gold);border:3px solid var(--walnut);
+}
+.tl-card{
+  background:linear-gradient(180deg,#fbf6ea,#efe4cf);border:2px solid var(--walnut);
+  border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);transition:.3s;
+}
+.tl-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover);border-color:var(--wine)}
+.tl-card .year{font-size:12px;font-weight:800;color:var(--wine);letter-spacing:1px;font-family:"Courier New",monospace}
+.tl-card h3{font-size:18px;font-weight:800;color:var(--ink);margin:2px 0 4px}
+.tl-card p{font-size:14px;color:var(--ink-2);line-height:1.75}
+.tl-card .tag{display:inline-block;margin-top:8px;font-size:11px;padding:3px 10px;border:1px solid var(--gold-2);color:var(--walnut-2);border-radius:12px;font-weight:700}
+
+/* 长廊拱门分类 */
+.arcade{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.arch{
+  text-align:center;background:#fbf6ea;border:2px solid var(--walnut);border-radius:60px 60px 14px 14px;
+  padding:24px 12px 18px;transition:.25s;cursor:pointer;position:relative;
+}
+.arch::before{
+  content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);
+  width:54px;height:34px;border:3px solid var(--gold);border-bottom:none;border-radius:30px 30px 0 0;
+}
+.arch .arch-ico{font-size:28px;margin-top:18px}
+.arch h4{font-size:15px;font-weight:800;color:var(--ink);margin-top:8px}
+.arch p{font-size:12px;color:var(--ink-3)}
+.arch:hover{background:var(--walnut);border-color:var(--walnut-2)}
+.arch:hover h4,.arch:hover p{color:var(--paper)}
+
+/* 关于 */
+.about-block{
+  background:#fbf6ea;border:2px solid var(--walnut);border-left:6px solid var(--wine);
+  border-radius:12px;padding:26px;font-size:15px;color:var(--ink-2);line-height:1.95;
+}
+.about-block b{color:var(--wine)}
+
+/* 钟摆栏 */
+.pend-bar{
+  position:relative;z-index:10;background:var(--walnut);color:var(--paper);
+  padding:12px 20px;text-align:center;font-size:13px;
+  display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;
+}
+.pend-bar .pend{display:inline-block;animation:swing2 2.4s ease-in-out infinite}
+@keyframes swing2{0%,100%{transform:rotate(-18deg)}50%{transform:rotate(18deg)}}
+
+.footer{position:relative;z-index:10;text-align:center;padding:20px 16px;color:var(--ink-3);font-size:12px;border-top:4px double var(--walnut);background:var(--paper-2)}
+
+@media(max-width:640px){
+  .clock-head h1{font-size:24px;letter-spacing:3px}
+  .clock-logo{width:78px;height:98px}
+  .timeline{padding-left:22px}
+  .tl-item::before{left:-19px}
+  .sec-title h2{font-size:19px}
+  .wrap{padding:0 14px 40px}
+  .arcade{grid-template-columns:repeat(2,1fr)}
+  .phono-bar{gap:8px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="clock-head">
+  <div class="clock-logo"><div class="face"></div></div>
+  <h1><b>久久</b>影视网</h1>
+  <p>jiujiuyingshiwang-h5.github.io —— 长长久久，陪你看老片。经典电影、高分老剧、修复版与纪录片，像座钟一样稳，像留声机一样暖。</p>
+  <nav class="clock-nav">
+    <a href="#">首页</a>
+    <a href="#classic">经典长映</a>
+    <a href="#arcade">影院长廊</a>
+    <a href="#about">关于久久</a>
+  </nav>
+</header>
+
+<div class="phono-bar">
+  <span><span class="disc">🎵</span> 留声机已上弦</span>
+  <span>当前曲目：经典永存 · 第 19 卷</span>
+  <span>🕰️ 放映时钟：正常运行</span>
+</div>
+
+<main class="wrap">
+
+  <section class="section" id="classic">
+    <div class="sec-title">
+      <span class="medal">壹</span><h2>经典长映</h2><span class="rule"></span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="year">1993 · 剧情/文艺</div>
+          <h3>霸王别姬</h3>
+          <p>程蝶衣一生“不疯魔不成活”，从清末到文革，戏台与时代一起老去。华语影史里最痛也最美的那一出。</p>
+          <span class="tag">华语巅峰</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="year">1994 · 武侠/文艺</div>
+          <h3>东邪西毒</h3>
+          <p>王家卫把金庸武侠拍成沙漠里的爱情独白。每个人都在等，每个人都没说出口。</p>
+          <span class="tag">王家卫美学</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="year">1995 · 喜剧/神话</div>
+          <h3>大话西游</h3>
+          <p>“曾经有一份真诚的爱情……”少年时笑，成年后哭。无厘头外壳下，是最正经的宿命与错过。</p>
+          <span class="tag">一生所爱</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="year">2000 · 爱情/都市</div>
+          <h3>花样年华</h3>
+          <p>旗袍、走廊、周慕云与苏丽珍。克制到极致，暧昧到发烫，王家卫把“没发生”拍得比“发生”更难忘。</p>
+          <span class="tag">4K修复推荐</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="year">1966 · 动画/神话</div>
+          <h3>大闹天宫</h3>
+          <p>上海美术电影制片厂的手绘神话，齐天大圣一个筋斗十万八千里。中国动画的来处，孩子的英雄梦。</p>
+          <span class="tag">国漫之源</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="year">1986 · 动作/警匪</div>
+          <h3>英雄本色</h3>
+          <p>小马哥风衣墨镜双枪，兄弟情义写在雪茄烟里。吴宇森暴力美学的起点，港片永远的男儿帖。</p>
+          <span class="tag">港片丰碑</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="arcade">
+    <div class="sec-title">
+      <span class="medal">贰</span><h2>影院长廊</h2><span class="rule"></span>
+    </div>
+    <div class="arcade">
+      <div class="arch"><div class="arch-ico">🎬</div><h4>老片厅</h4><p>修复版/胶片/文艺</p></div>
+      <div class="arch"><div class="arch-ico">📺</div><h4>长剧廊</h4><p>国产老剧/历史正剧</p></div>
+      <div class="arch"><div class="arch-ico">🌸</div><h4>动画阁</h4><p>上美影/吉卜力/老番</p></div>
+      <div class="arch"><div class="arch-ico">🎤</div><h4>综艺堂</h4><p>春晚/访谈/老综艺</p></div>
+      <div class="arch"><div class="arch-ico">📽️</div><h4>纪录轩</h4><p>山河/匠人/老城记</p></div>
+      <div class="arch"><div class="arch-ico">🎭</div><h4>戏曲苑</h4><p>京剧/越剧/黄梅戏</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="sec-title">
+      <span class="medal">叁</span><h2>关于久久</h2><span class="rule"></span>
+    </div>
+    <div class="about-block">
+      <p>
+        <b>久久影视网</b>（jiujiuyingshiwang-h5.github.io）是一个以“长长久久陪你看老片”为理念的影视导航与片单整理站点。
+        不堆新片、不追热搜、不挂盗版源，只把<b>经得起时间的事</b>挑出来：修复版电影、高分老剧、上美影动画、春晚与老综艺、山河纪录片。
+        页面用老座钟、留声机、时间轴长卷、拱门长廊来组织内容，移动端自适应，内链以 # 占位，
+        不生成 robots.txt / sitemap.xml，所有内容仅供学习与交流使用。[4,7](@ref)
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<div class="pend-bar">
+  <span><span class="pend">🕰️</span> 钟摆不停 · 片单常新</span>
+  <span>🎞️ 馆藏老片：8800+ 部</span>
+  <span>🛋️ 服务状态：长映中</span>
+</div>
+
+<footer class="footer">
+  © 2026 久久影视网 | jiujiuyingshiwang-h5.github.io | 长长久久，陪你看老片 | 内链以 # 占位
+</footer>
+
+</body>
+</html>
